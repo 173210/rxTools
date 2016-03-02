@@ -85,6 +85,7 @@ release-licenses:
 
 release-rxtools: all-target-rxtools
 	@mkdir -p release/$(SYS_PATH)
+	@cp rxtools/build/bin/init.bin release/arm9loaderhax.bin
 	@cp rxtools/build/bin/tool.bin release/$(SYS_PATH)
 	@cp rxtools/build/code.bin release/$(SYS_PATH)
 	@cp rxtools/build/font.bin release/$(SYS_PATH)
