@@ -29,11 +29,14 @@ __attribute__((section(".text.cstart"), noreturn)) void initStart()
 	int r;
 	FIL f;
 
-	// Enable TMIO IRQ
-	*(volatile uint32_t *)0x10001000 = 0x00010000;
-
 	// Unknown register to fix mounting of SDMC
 	*(volatile uint32_t *)0x10000020 = 0x340;
+
+	// Enable extended ARM9 internal memory of KTR
+	*(volatile uint8_t *)0x10000200 = 1;
+
+	// Enable TMIO IRQ
+	*(volatile uint32_t *)0x10001000 = 0x00010000;
 
 	if (!FSInit()) {
 		msg = L"Failed to initialize FS";
